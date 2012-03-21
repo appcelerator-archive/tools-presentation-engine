@@ -473,6 +473,14 @@ var Reveal = (function(){
 		indexh = updateSlides( HORIZONTAL_SLIDES_SELECTOR, indexh );
 		indexv = updateSlides( VERTICAL_SLIDES_SELECTOR, indexv );
 
+		// skypanther: Adds support for showing presenter notes in separate window
+		if(typeof presenterNotesWindow != 'undefined') {
+			var presenterNoteDiv = document.querySelector( 'section.present>div.slidenote');
+			if(presenterNoteDiv != null) {
+				presenterNotesWindow.postMessage(presenterNoteDiv.innerHTML, '*');
+			}
+		}
+
 		// Update progress if enabled
 		if( config.progress ) {
 			dom.progressbar.style.width = ( indexh / ( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ).length - 1 ) ) * window.innerWidth + 'px';
