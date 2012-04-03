@@ -477,6 +477,7 @@ var Reveal = (function(){
 		if(typeof presenterNotesWindow != 'undefined') {
 			var presenterNoteDiv = document.querySelector( 'section.present>div.slidenote');
 			if(presenterNoteDiv != null) {
+				localStorage.setItem('storage-event', presenterNoteDiv.innerHTML);
 				presenterNotesWindow.postMessage(presenterNoteDiv.innerHTML, '*');
 			}
 		}
